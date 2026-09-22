@@ -95,22 +95,28 @@ export global Dark {
 
     // accents
     //
-    // FrameWork's accent, so this reads as part of the same product as Boost
-    // rather than a different application wearing its logo. The two places that
-    // carry the look are the selection highlight and every activated tool, and
-    // both are this colour; making it the one accent as well says the same thing
-    // with one token instead of three.
+    // The FrameWork mark, so this reads as part of the same product rather than
+    // a different application wearing the logo. framework.shop's brand is the
+    // folded-F gradient (#60a5fa blue -> #a78bfa violet -> #f472b6 pink); a UI
+    // accent has to be a single colour, so this is the gradient's midpoint —
+    // the centre of the mark and what the logo reads as at small sizes. The
+    // ends do not work here: the blue is Boost's own accent, and the pink fails
+    // contrast as a fill.
+    //
+    // The two places that carry the look are the selection highlight and every
+    // activated tool, and both are this colour; making it the one accent as well
+    // says the same thing with one token instead of three.
     //
     // It is legible against near-black and near-white alike, which is what a
     // selection has to be: it lands on whatever happens to be underneath it.
     // Being a mid-tone rather than a bright lime, what sits *on* it is white ink
     // — see `on-accent` below, which changed with it.
-    out property <color> accent: #5b6cff;
-    out property <color> accent-hover: #7583ff;
-    out property <color> accent-soft: #5b6cff33;   // rgb(91 108 255 / 0.2)
+    out property <color> accent: #a78bfa;
+    out property <color> accent-hover: #b9a3fb;
+    out property <color> accent-soft: #a78bfa33;   // rgb(167 139 250 / 0.2)
     out property <color> green: #30d158;
     // Ink for text and glyphs sitting ON the accent. This accent is a mid-tone
-    // blue, so the ink is white; the lime it replaced needed near-black here.
+    // violet, so the ink is white; the lime it replaced needed near-black here.
     out property <color> on-accent: #ffffff;
     out property <color> on-green: #06210f;
 

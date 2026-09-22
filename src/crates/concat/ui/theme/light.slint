@@ -75,7 +75,8 @@ export global Light {
 
     // accents
     //
-    // FrameWork's accent, taken down to where a near-white ground can hold it.
+    // The FrameWork mark's violet, taken down to where a near-white ground can
+    // hold it: the dark palette's #a78bfa clears nothing as ink on near-white.
     // At this value it clears 4.5:1 against `panel` as ink and white clears 5:1
     // on it as a fill, which is what lets one token keep doing both jobs — the
     // 41 places that tint a glyph or a border with it and the 26 that fill a
@@ -85,9 +86,9 @@ export global Light {
     // Hover goes darker, not lighter: on this ground more contrast is more
     // engagement, which is the same sentence the dark palette's brighter hover
     // is saying.
-    out property <color> accent: #3a4be0;
-    out property <color> accent-hover: #2f3fd6;
-    out property <color> accent-soft: #3a4be02e;   // rgb(58 75 224 / 0.18)
+    out property <color> accent: #7c4ddb;
+    out property <color> accent-hover: #6a3cc9;
+    out property <color> accent-soft: #7c4ddb2e;   // rgb(124 77 219 / 0.18)
     out property <color> green: #248a3d;
     // Light ink, because the accent is now dark — the pairing the dark
     // palette's `on-accent` comment insists on, honoured from the other side.
