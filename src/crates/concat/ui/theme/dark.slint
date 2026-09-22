@@ -95,21 +95,23 @@ export global Dark {
 
     // accents
     //
-    // Lime, not blue. The two places that carry the look are the selection
-    // highlight and every activated tool, and both are lime; making it the
-    // one accent as well says the same thing with one token instead of three.
+    // FrameWork's accent, so this reads as part of the same product as Boost
+    // rather than a different application wearing its logo. The two places that
+    // carry the look are the selection highlight and every activated tool, and
+    // both are this colour; making it the one accent as well says the same thing
+    // with one token instead of three.
     //
     // It is legible against near-black and near-white alike, which is what a
     // selection has to be: it lands on whatever happens to be underneath it.
-    // What sits *on* it therefore has to be dark ink, and fixed — see
-    // `on-accent` below.
-    out property <color> accent: #cbf53f;
-    out property <color> accent-hover: #d9ff63;
-    out property <color> accent-soft: #cbf53f33;   // rgb(203 245 63 / 0.2)
+    // Being a mid-tone rather than a bright lime, what sits *on* it is white ink
+    // — see `on-accent` below, which changed with it.
+    out property <color> accent: #5b6cff;
+    out property <color> accent-hover: #7583ff;
+    out property <color> accent-soft: #5b6cff33;   // rgb(91 108 255 / 0.2)
     out property <color> green: #30d158;
-    // Ink for text and glyphs sitting ON the accent. A bright accent needs a
-    // dark one; a dark accent would want #ffffff here instead.
-    out property <color> on-accent: #15220a;
+    // Ink for text and glyphs sitting ON the accent. This accent is a mid-tone
+    // blue, so the ink is white; the lime it replaced needed near-black here.
+    out property <color> on-accent: #ffffff;
     out property <color> on-green: #06210f;
 
     // The Rail's dragger — the raised chip you push along a hairline rail, as
