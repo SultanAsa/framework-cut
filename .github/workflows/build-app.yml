@@ -32,6 +32,9 @@ name: Build app
 # The six targets are a matrix so one fails without taking the rest down;
 # `fail-fast` is off for the same reason.
 on:
+  # Buildable on demand from the Actions tab, so a fork can produce an
+  # installer without cutting a release first.
+  workflow_dispatch:
   workflow_call:
     secrets:
       APPLE_CERTIFICATE_P12:
