@@ -30,7 +30,7 @@ use concat_media::{
 use concat_render::{Compositor, CpuCompositor, plan_frame};
 
 #[derive(Parser)]
-#[command(name = "concat-cli", version, about = "Concat engine command line")]
+#[command(name = "concat-cli", version, about = "FrameWork Cut engine command line")]
 struct Cli {
     #[command(subcommand)]
     command: Command,
@@ -204,22 +204,22 @@ fn serve(
     let server = concat_server::Server::start(config, concat_api::Api::new)?;
     if let Some(address) = server.json_addr() {
         println!(
-            "Concat API {}: JSON-RPC on {address}",
+            "FrameWork Cut API {}: JSON-RPC on {address}",
             concat_api::API_VERSION
         );
     }
     if let Some(path) = server.socket_path() {
         println!(
-            "Concat API {}: JSON-RPC on {}",
+            "FrameWork Cut API {}: JSON-RPC on {}",
             concat_api::API_VERSION,
             path.display()
         );
     }
     if let Some(address) = server.grpc_addr() {
-        println!("Concat API {}: gRPC on {address}", concat_api::API_VERSION);
+        println!("FrameWork Cut API {}: gRPC on {address}", concat_api::API_VERSION);
     }
     println!(
-        "Concat API {}: token {}",
+        "FrameWork Cut API {}: token {}",
         concat_api::API_VERSION,
         server.token()
     );

@@ -1,13 +1,20 @@
 # Third-party notices
 
+## Concat (upstream)
+
+FrameWork Cut is a fork of Concat (https://github.com/jub0t/Concat), copyright
+Jareer and the Concat contributors, licensed AGPL-3.0-or-later. Every notice
+below is inherited from that project. This build is renamed and re-iconed as
+Concat's trademark policy asks of modified builds; it is not official Concat.
+
 ## FFmpeg
 
-Concat links FFmpeg's libraries - libavformat, libavcodec, libavfilter,
+FrameWork Cut links FFmpeg's libraries - libavformat, libavcodec, libavfilter,
 libswscale and libswresample - through the `ffmpeg-the-third` crate. The
 Slint app spawns no `ffmpeg` or `ffprobe` process.
 
 FFmpeg is licensed under the LGPL-2.1-or-later; builds that include x264
-(which the H.264 export uses) are GPL-2.0-or-later. Concat's own sources are
+(which the H.264 export uses) are GPL-2.0-or-later. FrameWork Cut's own sources are
 AGPL-3.0-or-later, and section 13 of the GPL-3.0 and AGPL-3.0 expressly
 permits linking the two, so a distributed build may be conveyed on those
 terms. Which FFmpeg a binary carries depends on the machine that built it:
@@ -79,7 +86,7 @@ links onnxruntime (MIT), piper-phonemize (MIT) and espeak-ng
 (**GPL-3.0-or-later**, https://github.com/espeak-ng/espeak-ng) for
 grapheme-to-phoneme conversion. Because espeak-ng is compiled into the app
 binary, distributed builds must comply with the GPL-3.0 for that combined
-work. Concat's own sources are AGPL-3.0-or-later; section 13 of both GPL-3.0
+work. FrameWork Cut's own sources are AGPL-3.0-or-later; section 13 of both GPL-3.0
 and AGPL-3.0 expressly permits that combination, so the combined binary may be
 conveyed on those terms.
 

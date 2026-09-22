@@ -74,7 +74,7 @@ pub fn system_facts() -> Vec<(String, String)> {
     vec![
         (
             t("Application"),
-            format!("Concat {}", env!("CARGO_PKG_VERSION")),
+            format!("FrameWork Cut {}", env!("CARGO_PKG_VERSION")),
         ),
         (
             t("Build"),

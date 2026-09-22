@@ -1,8 +1,8 @@
-; Concat's Windows installer.
+; FrameWork Cut's Windows installer.
 ;
 ; Built by build-app.yml with Inno Setup from the staged folder the .msi
 ; is also made of, so the two ship the same files; this is the one a
-; person double-clicks, and it puts Concat in the Start menu and can take
+; person double-clicks, and it puts FrameWork Cut in the Start menu and can take
 ; it out again. Everything it needs is handed in on the command line:
 ;
 ;   iscc /DVersion=0.2.3 /DArch=x64compatible /DSuffix=x86_64 ^
@@ -32,23 +32,23 @@
 [Setup]
 ; One id for the life of the product, so an install over an older one is
 ; an upgrade and not a second copy.
-AppId={{7B1E5C3A-3B9E-4F0B-9C6D-2F1D0C0A0C47}
-AppName=Concat
+AppId={{A4E17C92-6D3B-4F58-9A0E-3C71B8D45E20}
+AppName=FrameWork Cut
 AppVersion={#Version}
-AppVerName=Concat {#Version}
-AppPublisher=Concat contributors
-AppPublisherURL=https://github.com/jub0t/Concat
-AppSupportURL=https://github.com/jub0t/Concat/issues
-AppUpdatesURL=https://github.com/jub0t/Concat/releases
-DefaultDirName={autopf}\Concat
-DefaultGroupName=Concat
+AppVerName=FrameWork Cut {#Version}
+AppPublisher=FrameWork
+AppPublisherURL=https://framework.shop
+AppSupportURL=https://framework.shop/support
+AppUpdatesURL=https://github.com/SultanAsa/framework-cut/releases
+DefaultDirName={autopf}\FrameWork Cut
+DefaultGroupName=FrameWork Cut
 DisableProgramGroupPage=yes
 LicenseFile=..\..\LICENSE
 OutputDir={#Out}
-OutputBaseFilename=Concat-{#Version}-windows-{#Suffix}-setup
-SetupIconFile=..\icons\concat.ico
-UninstallDisplayIcon={app}\concat.ico
-UninstallDisplayName=Concat
+OutputBaseFilename=FrameWorkCut-{#Version}-windows-{#Suffix}-setup
+SetupIconFile=..\icons\frameworkcut.ico
+UninstallDisplayIcon={app}\frameworkcut.ico
+UninstallDisplayName=FrameWork Cut
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern
@@ -67,11 +67,11 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 Source: "{#Stage}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "..\icons\concat.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\icons\frameworkcut.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
-Name: "{autoprograms}\Concat"; Filename: "{app}\concat.exe"; IconFilename: "{app}\concat.ico"
-Name: "{autodesktop}\Concat"; Filename: "{app}\concat.exe"; IconFilename: "{app}\concat.ico"; Tasks: desktopicon
+Name: "{autoprograms}\FrameWork Cut"; Filename: "{app}\frameworkcut.exe"; IconFilename: "{app}\frameworkcut.ico"
+Name: "{autodesktop}\FrameWork Cut"; Filename: "{app}\frameworkcut.exe"; IconFilename: "{app}\frameworkcut.ico"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\concat.exe"; Description: "{cm:LaunchProgram,Concat}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\frameworkcut.exe"; Description: "{cm:LaunchProgram,FrameWork Cut}"; Flags: nowait postinstall skipifsilent

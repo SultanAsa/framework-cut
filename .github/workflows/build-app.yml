@@ -1,6 +1,6 @@
 name: Build app
 
-# Builds Concat - the Slint window, `src/crates/concat` - for every
+# Builds FrameWork Cut - the Slint window, `src/crates/concat` - for every
 # platform and architecture it ships on, each on a runner of that
 # architecture so nothing is cross-compiled, and uploads one artifact per
 # target:
@@ -84,39 +84,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # `ffmpeg` and `sherpa` name the target the way each project's
-          # release archives do.
-          - platform: macos
-            arch: arm64
-            os: macos-15
-            target: aarch64-apple-darwin
-            sherpa: osx-arm64
-          - platform: macos
-            arch: x86_64
-            os: macos-15-intel
-            target: x86_64-apple-darwin
-            sherpa: osx-x64
-          # 22.04, not latest: the binary links the build machine's glibc,
-          # so the oldest supported runner is what keeps it runnable on
-          # older distributions.
-          - platform: linux
-            arch: x86_64
-            os: ubuntu-22.04
-            target: x86_64-unknown-linux-gnu
-            ffmpeg: linux64
-            sherpa: linux-x64
-            ort: x64
-            nfpm: amd64
-            appimage: x86_64
-          - platform: linux
-            arch: aarch64
-            os: ubuntu-22.04-arm
-            target: aarch64-unknown-linux-gnu
-            ffmpeg: linuxarm64
-            sherpa: linux-aarch64
-            ort: aarch64
-            nfpm: arm64
-            appimage: aarch64
+          # Windows x86_64 alone: FrameWork Cut ships beside FrameWork Boost,
+          # which is a Windows application. `ffmpeg` and `sherpa` name the
+          # target the way each project's release archives do.
           - platform: windows
             arch: x86_64
             os: windows-2022
@@ -125,14 +95,6 @@ jobs:
             sherpa: win-x64
             inno: x64compatible
             wix: x64
-          - platform: windows
-            arch: aarch64
-            os: windows-11-arm
-            target: aarch64-pc-windows-msvc
-            ffmpeg: winarm64
-            sherpa: win-arm64
-            inno: arm64
-            wix: arm64
     runs-on: ${{ matrix.os }}
     # The slowest target (Intel macOS, fat LTO) finishes in under half an
     # hour. A job still running past this is stuck, not slow.
@@ -147,7 +109,7 @@ jobs:
         run: |
           version=$(sed -n 's/^version = "\(.*\)"/\1/p' src/Cargo.toml | head -1)
           echo "version=$version" >> "$GITHUB_OUTPUT"
-          echo "Building Concat $version for ${{ matrix.target }}"
+          echo "Building FrameWork Cut $version for ${{ matrix.target }}"
 
       # ── Linux ──────────────────────────────────────────────────────────
       # Slint's Skia renderer links fontconfig and freetype; cpal links
@@ -655,9 +617,9 @@ jobs:
           VERSION: ${{ steps.version.outputs.version }}
         run: |
           $ErrorActionPreference = "Stop"
-          $name = "Concat-$env:VERSION-windows-${{ matrix.arch }}"
+          $name = "FrameWorkCut-$env:VERSION-windows-${{ matrix.arch }}"
           New-Item -ItemType Directory -Force "stage\$name" | Out-Null
-          Copy-Item "src\target\${{ matrix.target }}\app\concat.exe" "stage\$name\"
+          Copy-Item "src\target\${{ matrix.target }}\app\frameworkcut.exe" "stage\$name\"
           Copy-Item "$env:FFMPEG_DIR\bin\*.dll" "stage\$name\"
           # The sherpa-onnx runtime, set aside by the download step above.
           Copy-Item "$env:SHERPA_DLL_DIR\*.dll" "stage\$name\"
@@ -672,7 +634,7 @@ jobs:
           }
           if (-not (Test-Path $iscc)) { throw "Inno Setup is not at $iscc" }
           & $iscc "/DVersion=$env:VERSION" "/DArch=${{ matrix.inno }}" "/DSuffix=${{ matrix.arch }}" `
-            "/DStage=$PWD\stage\$name" "/DOut=$PWD\stage" assets\windows\concat.iss
+            "/DStage=$PWD\stage\$name" "/DOut=$PWD\stage" assets\windows\frameworkcut.iss
           if ($LASTEXITCODE -ne 0) { throw "Inno Setup failed with $LASTEXITCODE" }
           if (-not (Test-Path "stage\$name-setup.exe")) { throw "stage\$name-setup.exe is not there" }
           # And the .msi, with WiX, for the machines an administrator
@@ -681,7 +643,7 @@ jobs:
           # No .wixpdb: everything in stage/ is published, and a debug
           # database for the installer is nothing a release should carry.
           wix build -arch ${{ matrix.wix }} -pdbtype none "-d" "Version=$env:VERSION" "-d" "Root=$PWD" "-d" "Stage=$PWD\stage\$name" `
-            -o "stage\$name.msi" assets\windows\concat.wxs
+            -o "stage\$name.msi" assets\windows\frameworkcut.wxs
           if ($LASTEXITCODE -ne 0) { throw "WiX failed with $LASTEXITCODE" }
           if (-not (Test-Path "stage\$name.msi")) { throw "stage\$name.msi is not there" }
           # The folder itself is not published: the two installers are.
@@ -689,6 +651,6 @@ jobs:
 
       - uses: actions/upload-artifact@v7
         with:
-          name: Concat-${{ matrix.platform }}-${{ matrix.arch }}
+          name: FrameWorkCut-${{ matrix.platform }}-${{ matrix.arch }}
           path: stage/*
           if-no-files-found: error
