@@ -1,8 +1,8 @@
-; FrameWork Cut's Windows installer.
+; The Video Editor's Windows installer.
 ;
 ; Built by build-app.yml with Inno Setup from the staged folder the .msi
 ; is also made of, so the two ship the same files; this is the one a
-; person double-clicks, and it puts FrameWork Cut in the Start menu and can take
+; person double-clicks, and it puts the Video Editor in the Start menu and can take
 ; it out again. Everything it needs is handed in on the command line:
 ;
 ;   iscc /DVersion=0.2.3 /DArch=x64compatible /DSuffix=x86_64 ^
@@ -33,22 +33,22 @@
 ; One id for the life of the product, so an install over an older one is
 ; an upgrade and not a second copy.
 AppId={{A4E17C92-6D3B-4F58-9A0E-3C71B8D45E20}
-AppName=FrameWork Cut
+AppName=Video Editor
 AppVersion={#Version}
-AppVerName=FrameWork Cut {#Version}
+AppVerName=Video Editor {#Version}
 AppPublisher=FrameWork
 AppPublisherURL=https://framework.shop
 AppSupportURL=https://framework.shop/support
 AppUpdatesURL=https://github.com/SultanAsa/framework-cut/releases
 DefaultDirName={autopf}\FrameWork Cut
-DefaultGroupName=FrameWork Cut
+DefaultGroupName=Video Editor
 DisableProgramGroupPage=yes
 LicenseFile=..\..\LICENSE
 OutputDir={#Out}
 OutputBaseFilename=FrameWorkCut-{#Version}-windows-{#Suffix}-setup
 SetupIconFile=..\icons\frameworkcut.ico
 UninstallDisplayIcon={app}\frameworkcut.ico
-UninstallDisplayName=FrameWork Cut
+UninstallDisplayName=Video Editor
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern
@@ -70,8 +70,8 @@ Source: "{#Stage}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs crea
 Source: "..\icons\frameworkcut.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
-Name: "{autoprograms}\FrameWork Cut"; Filename: "{app}\frameworkcut.exe"; IconFilename: "{app}\frameworkcut.ico"
-Name: "{autodesktop}\FrameWork Cut"; Filename: "{app}\frameworkcut.exe"; IconFilename: "{app}\frameworkcut.ico"; Tasks: desktopicon
+Name: "{autoprograms}\Video Editor"; Filename: "{app}\frameworkcut.exe"; IconFilename: "{app}\frameworkcut.ico"
+Name: "{autodesktop}\Video Editor"; Filename: "{app}\frameworkcut.exe"; IconFilename: "{app}\frameworkcut.ico"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\frameworkcut.exe"; Description: "{cm:LaunchProgram,FrameWork Cut}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\frameworkcut.exe"; Description: "{cm:LaunchProgram,Video Editor}"; Flags: nowait postinstall skipifsilent

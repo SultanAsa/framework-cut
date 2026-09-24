@@ -42,6 +42,11 @@ impl Default for StartPane {
             name: "Untitled project".into(),
             // A phone has no desk: its projects live at the top of the
             // folder the file manager shows for the app.
+            //
+            // The folder keeps the old name on purpose. The app is presented as
+            // "Video Editor" now, but this string is a PATH: anyone who already
+            // saved a project would find their work missing from the new folder
+            // rather than moved into it.
             location: home_folder(if cfg!(target_os = "android") {
                 "FrameWork Cut"
             } else {
